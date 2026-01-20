@@ -28,6 +28,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.text.style.TextAlign
 import io.posadilla.applistacontactos.ui.theme.AppListaContactosTheme
 
 class MainActivity : ComponentActivity() {
@@ -127,7 +128,7 @@ fun HomeView(modifier: Modifier = Modifier) {
                         listaNombres.remove(nombre)
                     }
             ){
-                Text(text = nombre)
+                Text(text = nombre, textAlign = TextAlign.Center)
             }
 
         }
