@@ -153,3 +153,11 @@ fun GreetingPreview() {
     }
 }
 */
+/*
+PS C:\Users\raul.esteban_alumnoj\AndroidStudioProjects\AppListaContactos> git add .
+warning: in the working copy of '.idea/misc.xml', LF will be replaced by CRLF the next time Git touches it
+PS C:\Users\raul.esteban_alumnoj\AndroidStudioProjects\AppListaContactos> git commit -m "Actualizacion Centrado"
+[master b2241ad] Actualizacion Centrado
+ 2 files changed, 2 insertions(+), 4 deletions(-)
+PS C:\Users\raul.esteban_alumnoj\AndroidStudioProjects\AppListaContactos> git push
+* */
