@@ -8,6 +8,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -109,6 +110,7 @@ fun HomeView(modifier: Modifier = Modifier) {
                     }
                 },
                 modifier = Modifier.padding(20.dp)
+
             ) {
                 Text("Añadir Nombre")
             }
@@ -116,7 +118,9 @@ fun HomeView(modifier: Modifier = Modifier) {
         items( items = listaNombres)
         { nombre ->
             Card(
-                modifier = Modifier.padding(20.dp)
+                modifier = Modifier
+                    .padding(20.dp)
+                    //.wrapContentWidth(Alignment.CenterHorizontally)
 
                     // Novedad!! clickable y remove
                     .clickable{
