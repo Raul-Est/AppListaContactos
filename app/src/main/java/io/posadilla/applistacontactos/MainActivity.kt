@@ -4,9 +4,12 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.hoverable
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -28,8 +31,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.fromColorLong
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import io.posadilla.applistacontactos.ui.theme.AppListaContactosTheme
+import java.math.BigInteger
+import kotlin.String
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,6 +65,11 @@ fun HomeView(modifier: Modifier = Modifier) {
             "Mercedes"
         )
     }
+    val listaContactos = remember {mutableStateListOf(Contacto(nombre = "Mario", apellidos = "Rios", mail = "mario.rios@iepgroup.es", telefono = BigInteger(
+        "123456789"
+    ),
+        imagenId = R.drawable.veni
+    ))}
     var inputText by remember { mutableStateOf("") }
 
     /*
@@ -106,7 +118,15 @@ fun HomeView(modifier: Modifier = Modifier) {
                     // añadir si
                     val texto = inputText
                     if(texto.isNotEmpty()){
-                        listaNombres.add(inputText)
+                        listaContactos.add(
+                            Contacto (
+                                nombre = inputText,
+                                apellidos = "Rios",
+                                mail = "mail@mail",
+                                telefono = BigInteger("0000000"),
+                                imagenId = R.drawable.veni
+                            )
+                        )
                         inputText = ""
                     }
                 },
@@ -120,24 +140,53 @@ fun HomeView(modifier: Modifier = Modifier) {
         { nombre ->
             Card(
                 modifier = Modifier
-                    .padding(20.dp)
+                    .padding(20.dp),
+                onClick = { listaNombres.remove(nombre)}
                     //.wrapContentWidth(Alignment.CenterHorizontally)
-
                     // Novedad!! clickable y remove
-                    .clickable{
-                        listaNombres.remove(nombre)
-                    }
+                    // .clickable{ listaNombres.remove(nombre) },
+                    //.hoverable(Propiedad Del Hover por definir),
+
             ){
                 // Centramos el texto en el boton, ocupando
                 // todo el espacio posible
 
                 Text(
-                    modifier= Modifier.fillMaxSize(1f),
+                    modifier= Modifier.fillMaxWidth(1f),
                     text = nombre, textAlign = TextAlign.Center)
             }
-
         }
+//        item (
+//            span = {GridItemSpan(maxLineSpan)}
+//        ){
+//            Image(
+//                painter = painterResource(R.drawable.veni),
+//                contentDescription = null,
+//                modifier = Modifier.height(75.dp)
+//                // nota: agregar tamaño a la imagen
+//            )
+//        }
 
+
+        items( items = listaContactos)
+        { contacto ->
+            Card(
+                modifier = Modifier
+                    .padding(20.dp),
+                onClick = { listaContactos.remove(contacto)}
+            ){
+                Image(
+                    painter = painterResource(R.drawable.veni),
+                    contentDescription = null,
+                    modifier = Modifier.height(75.dp)
+                    // nota: agregar tamaño a la imagen
+                )
+                Text( text = contacto.nombre +" "+
+                    contacto.apellidos //+" "+
+                    //contacto.mail + " "+ contacto.telefono
+                )
+            }
+        }
     }
 }
 
@@ -163,8 +212,8 @@ PS C:\Users\raul.esteban_alumnoj\AndroidStudioProjects\AppListaContactos> git ad
 warning: in the working copy of '.idea/misc.xml', LF will be replaced by CRLF the next time Git touches it
 PS C:\Users\raul.esteban_alumnoj\AndroidStudioProjects\AppListaContactos> git commit -m "Actualizacion Centrado"
 [master b2241ad] Actualizacion Centrado
- 2 files changed, 2 insertions(+), 4 deletions(-)
+2 files changed, 2 insertions(+), 4 deletions(-)
 PS C:\Users\raul.esteban_alumnoj\AndroidStudioProjects\AppListaContactos> git push
 
-
+bajar con -> git pull
 * */
