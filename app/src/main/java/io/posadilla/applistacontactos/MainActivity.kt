@@ -128,7 +128,12 @@ fun HomeView(modifier: Modifier = Modifier) {
                         listaNombres.remove(nombre)
                     }
             ){
-                Text(text = nombre, textAlign = TextAlign.Center)
+                // Centramos el texto en el boton, ocupando
+                // todo el espacio posible
+
+                Text(
+                    modifier= Modifier.fillMaxSize(1f),
+                    text = nombre, textAlign = TextAlign.Center)
             }
 
         }
@@ -160,4 +165,6 @@ PS C:\Users\raul.esteban_alumnoj\AndroidStudioProjects\AppListaContactos> git co
 [master b2241ad] Actualizacion Centrado
  2 files changed, 2 insertions(+), 4 deletions(-)
 PS C:\Users\raul.esteban_alumnoj\AndroidStudioProjects\AppListaContactos> git push
+
+
 * */
