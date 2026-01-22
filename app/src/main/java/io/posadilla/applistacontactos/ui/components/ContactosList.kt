@@ -1,9 +1,10 @@
 package io.posadilla.applistacontactos.ui.components
 
-import androidx.compose.runtime.Composable
-import io.posadilla.applistacontactos.Contacto
 
+// aquí tener la lista de contactos
+
+/*
 @Composable
 fun ContactosList(contacto: List<Contacto>){
 
-}
+}*/
